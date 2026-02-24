@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Hero Section -->
+<div class="gradient-bg text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute w-96 h-96 bg-white rounded-full -top-48 -left-24"></div>
+        <div class="absolute w-96 h-96 bg-white rounded-full -bottom-48 -right-24"></div>
+    </div>
+    
+    <div class="container mx-auto px-6 py-20 relative z-10">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
+                    <span class="text-sm font-medium">🏥 World-Class Healthcare</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+                    Your Health,<br/>
+                    <span class="text-yellow-300">Our Priority</span>
+                </h1>
+                <p class="text-xl text-white/90 mb-8 leading-relaxed">
+                    Experience comprehensive healthcare management with 24/7 support, 
+                    expert medical professionals, and state-of-the-art facilities.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="{% url 'Appoinment_List'%}" class="bg-white text-purple-600 px-8 py-4 rounded-xl font-semibold hover:shadow-2xl transition transform hover:scale-105 flex items-center space-x-2">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Book Appointment</span>
+                    </a>
+                    <a href="#" class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/30 transition border border-white/30 flex items-center space-x-2">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Emergency: 911</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:block floating">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl transform rotate-6"></div>
+                    <img src="{% static 'images/girl.jpg' %}"
+                    alt="Healthcare Professional"
+                    class="relative rounded-3xl shadow-2xl w-full h-96 object-cover object-top">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Stats Bar -->
+<div class="container mx-auto px-6 -mt-10 relative z-20">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-white rounded-2xl shadow-xl p-6 card-hover border-t-4 border-blue-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Happy Patients</p>
+                    <h3 class="text-3xl font-bold text-gray-800 mt-1">15K+</h3>
+                    <p class="text-green-500 text-xs mt-1">
+                        <i class="fas fa-arrow-up"></i> 12% this month
+                    </p>
+                </div>
+                <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-users text-blue-500 text-2xl"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl shadow-xl p-6 card-hover border-t-4 border-green-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Expert Doctors</p>
+                    <h3 class="text-3xl font-bold text-gray-800 mt-1">25</h3>
+                    <p class="text-green-500 text-xs mt-1">
+                        <i class="fas fa-arrow-up"></i> 3 new specialists
+                    </p>
+                </div>
+                <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-user-md text-green-500 text-2xl"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl shadow-xl p-6 card-hover border-t-4 border-purple-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Success Rate</p>
+                    <h3 class="text-3xl font-bold text-gray-800 mt-1">98%</h3>
+                    <p class="text-green-500 text-xs mt-1">
+                        <i class="fas fa-check-circle"></i> Outstanding
+                    </p>
+                </div>
+                <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-chart-line text-purple-500 text-2xl"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl shadow-xl p-6 card-hover border-t-4 border-orange-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Departments</p>
+                    <h3 class="text-3xl font-bold text-gray-800 mt-1">18</h3>
+                    <p class="text-gray-400 text-xs mt-1">
+                        <i class="fas fa-hospital"></i> Specialized care
+                    </p>
+                </div>
+                <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-building text-orange-500 text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Dashboard -->
+<div class="container mx-auto px-6 py-16">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-800 mb-3">Management Dashboard</h2>
+        <p class="text-gray-600 text-lg">Comprehensive overview of hospital operations</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Doctors Card -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+            <div class="bg-gradient-to-br from-blue-500 to-blue-600 p-6">
+                <div class="flex items-center justify-between text-white">
+                    <div>
+                        <p class="text-blue-100 text-sm">Medical Staff</p>
+                        <h3 class="text-3xl font-bold mt-1">25</h3>
+                    </div>
+                    <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-stethoscope text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6">
+                <h4 class="font-bold text-gray-800 mb-3 flex items-center">
+                    <i class="fas fa-user-md text-blue-500 mr-2"></i>
+                    Our Doctors
+                </h4>
+                <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                    Board-certified physicians across 18 specialties providing exceptional care 24/7.
+                </p>
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex -space-x-2">
+                        <img src="https://i.pravatar.cc/150?img=1" class="w-8 h-8 rounded-full border-2 border-white" alt="Doctor">
+                        <img src="https://i.pravatar.cc/150?img=2" class="w-8 h-8 rounded-full border-2 border-white" alt="Doctor">
+                        <img src="https://i.pravatar.cc/150?img=3" class="w-8 h-8 rounded-full border-2 border-white" alt="Doctor">
+                        <div class="w-8 h-8 rounded-full bg-blue-500 border-2 border-white flex items-center justify-center">
+                            <span class="text-white text-xs font-semibold">+22</span>
+                        </div>
+                    </div>
+                    <span class="text-xs text-gray-500">Online: 18</span>
+                </div>
+                <a href="{% url 'doctor_list' %}" class="block w-full text-center bg-blue-50 text-blue-600 py-3 rounded-xl font-semibold hover:bg-blue-100 transition">
+                    View All Doctors <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Patients Card -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+            <div class="bg-gradient-to-br from-green-500 to-green-600 p-6">
+                <div class="flex items-center justify-between text-white">
+                    <div>
+                        <p class="text-green-100 text-sm">Registered</p>
+                        <h3 class="text-3xl font-bold mt-1">120</h3>
+                    </div>
+                    <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-procedures text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6">
+                <h4 class="font-bold text-gray-800 mb-3 flex items-center">
+                    <i class="fas fa-hospital-user text-green-500 mr-2"></i>
+                    Patient Records
+                </h4>
+                <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                    Secure digital health records with real-time updates and comprehensive care history.
+                </p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">Active Today</span>
+                        <span class="font-semibold text-gray-800">42 patients</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">New This Week</span>
+                        <span class="font-semibold text-gray-800">8 patients</span>
+                    </div>
+                </div>
+                <a href="{% url 'patient_list' %}" class="block w-full text-center bg-green-50 text-green-600 py-3 rounded-xl font-semibold hover:bg-green-100 transition">
+                    View All Patients <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Appointments Card -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+            <div class="bg-gradient-to-br from-purple-500 to-purple-600 p-6">
+                <div class="flex items-center justify-between text-white">
+                    <div>
+                        <p class="text-purple-100 text-sm">Today's Schedule</p>
+                        <h3 class="text-3xl font-bold mt-1">10</h3>
+                    </div>
+                    <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center pulse-animation">
+                        <i class="fas fa-calendar-check text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6">
+                <h4 class="font-bold text-gray-800 mb-3 flex items-center">
+                    <i class="fas fa-clock text-purple-500 mr-2"></i>
+                    Appointments
+                </h4>
+                <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                    Smart scheduling system with automated reminders and seamless booking experience.
+                </p>
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">Completed</span>
+                        <span class="font-semibold text-green-600">6 appointments</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">Pending</span>
+                        <span class="font-semibold text-orange-600">4 appointments</span>
+                    </div>
+                </div>
+                <a href="{% url 'Appoinment_List'%}" class="block w-full text-center bg-purple-50 text-purple-600 py-3 rounded-xl font-semibold hover:bg-purple-100 transition">
+                    View  Appoinment <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="bg-gradient-to-br from-gray-50 to-white py-16">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800 mb-3">Why Choose MediCare Plus?</h2>
+            <p class="text-gray-600 text-lg">Excellence in healthcare, powered by technology</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="text-center p-6 bg-white rounded-2xl shadow-lg card-hover">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-shield-alt text-blue-500 text-2xl"></i>
+                </div>
+                <h4 class="font-bold text-gray-800 mb-2">Secure & Private</h4>
+                <p class="text-gray-600 text-sm">HIPAA compliant data protection</p>
+            </div>
+            
+            <div class="text-center p-6 bg-white rounded-2xl shadow-lg card-hover">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-headset text-green-500 text-2xl"></i>
+                </div>
+                <h4 class="font-bold text-gray-800 mb-2">24/7 Support</h4>
+                <p class="text-gray-600 text-sm">Always here when you need us</p>
+            </div>
+            
+            <div class="text-center p-6 bg-white rounded-2xl shadow-lg card-hover">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-laptop-medical text-purple-500 text-2xl"></i>
+                </div>
+                <h4 class="font-bold text-gray-800 mb-2">Telemedicine</h4>
+                <p class="text-gray-600 text-sm">Virtual consultations available</p>
+            </div>
+            
+            <div class="text-center p-6 bg-white rounded-2xl shadow-lg card-hover">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-award text-orange-500 text-2xl"></i>
+                </div>
+                <h4 class="font-bold text-gray-800 mb-2">Certified Care</h4>
+                <p class="text-gray-600 text-sm">Accredited medical excellence</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
