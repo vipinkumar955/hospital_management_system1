@@ -10,12 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
-from pathlib import Path
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
@@ -56,7 +50,7 @@ ROOT_URLCONF = 'Hospital.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [ 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,16 +67,7 @@ WSGI_APPLICATION = 'Hospital.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hospital_db',
-        'USER': 'root',
-        'PASSWORD': 'vip@1234',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+
 
 
 # Password validation
@@ -119,8 +104,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+import os
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Static files
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]   # local static folder
+STATIC_ROOT = BASE_DIR / "staticfiles"    # collectstatic output
+
+# Media files (uploaded images)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.parse('postgresql://hospital_user:RjV0r5Pk61cVjSsRx6x8eacRGwA8LOwC@dpg-d6rqueea2pns73ft07rg-a/hospital_db_5y87') 
+}
