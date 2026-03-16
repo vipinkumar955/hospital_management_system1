@@ -1,5 +1,5 @@
 from django import forms
-from .models import Doctor, Schedule, Bio
+from .models import Doctor, Schedule
 
 class DoctorForm(forms.ModelForm):
     class Meta:
@@ -10,8 +10,3 @@ class ScheduleForm(forms.ModelForm):
     class Meta:
         model = Schedule
         fields = ['day', 'start_time', 'end_time']
-
-class BioForm(forms.ModelForm):
-    class Meta:
-        model = Bio
-        fields = ['bio_text']

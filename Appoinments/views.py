@@ -4,7 +4,7 @@ from .forms import AppoinmentForm
 from django.core.paginator import Paginator
 
 
-# 📌 List
+#  List
 def Appoinment_List(request):
     page_obj = Appoinment.objects.all().order_by('id')
 
@@ -14,7 +14,7 @@ def Appoinment_List(request):
     })
 
 
-# 📌 Add
+#  Add
 def add_appoinment(request):
     if request.method == "POST":
         form = AppoinmentForm(request.POST)
@@ -30,7 +30,7 @@ def add_appoinment(request):
     return render(request, 'Appoinments/add_appoinment.html', {'form': form})
 
 
-# 📌 Edit
+#  Edit
 def edit_appoinment(request, id):
     appoinment = get_object_or_404(Appoinment, id=id)
 
@@ -47,7 +47,7 @@ def edit_appoinment(request, id):
     return render(request, 'Appoinments/add_appoinment.html', {'form': form})
 
 
-# 📌 Delete
+#  Delete
 def delete_appoinment(request, id):
     appoinment = get_object_or_404(Appoinment, id=id)
     appoinment.delete()

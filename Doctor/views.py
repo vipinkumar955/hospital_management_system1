@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Doctor, Bio, Schedule
-from .forms import DoctorForm, BioForm, ScheduleForm
+from .models import Doctor, Schedule
+from .forms import DoctorForm, ScheduleForm
 
 def doctor_list(request):
     doctors = Doctor.objects.all()
@@ -30,25 +30,12 @@ def delete_doctor(request, doctor_id):
 
 def doctor_detail(request, doctor_id):
     doctor = get_object_or_404(Doctor, id=doctor_id)
-    bio = Bio.objects.filter(doctor=doctor).first()
+
     schedules = Schedule.objects.filter(doctor=doctor)
     return render(request, 'Doctor/doctor_detail.html', {
         'doctor': doctor,
-        'bio': bio,
         'schedules': schedules
     })
-
-def add_bio(request, doctor_id):
-    doctor = get_object_or_404(Doctor, id=doctor_id)
-    form = BioForm(request.POST or None)
-
-    if form.is_valid():
-        bio = form.save(commit=False)
-        bio.doctor = doctor
-        bio.save()
-        return redirect('doctor_detail', doctor_id=doctor.id)
-
-    return render(request, 'Doctor/bio_form.html', {'form': form, 'doctor': doctor})
 
 def add_schedule(request, doctor_id):
     doctor = get_object_or_404(Doctor, id=doctor_id)

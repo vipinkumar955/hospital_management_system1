@@ -27,10 +27,3 @@ class Schedule(models.Model):
 
     def __str__(self):
         return f"{self.doctor.name} - {self.day}"
-
-class Bio(models.Model):
-    doctor = models.OneToOneField(Doctor, on_delete=models.CASCADE)
-    bio_text = models.TextField()
-
-    def __str__(self):
-        return f"{self.doctor.name} Bio"
