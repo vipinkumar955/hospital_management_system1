@@ -18,7 +18,7 @@ SECRET_KEY = 'django-insecure-pj&582b)%d@q4&bpwgz5&+h*$w&yjs@+3hw90-s8#ojea%m#$r
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['hospital-management-system1-hjlf.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'hospital-management-system1-hjlf.onrender.com']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -109,16 +110,25 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Static files
+# Static files (CSS, JS)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]   # local static folder
-STATIC_ROOT = BASE_DIR / "staticfiles"    # collectstatic output
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Render के लिए जरूरी
 
 # Media files (uploaded images)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
+# settings.py
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = 'YOUR_AWS_KEY'
+AWS_SECRET_ACCESS_KEY = 'YOUR_AWS_SECRET'
+AWS_STORAGE_BUCKET_NAME = 'your-bucket-name'
+AWS_QUERYSTRING_AUTH = False  # public read
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.parse('postgresql://hospital_user:RjV0r5Pk61cVjSsRx6x8eacRGwA8LOwC@dpg-d6rqueea2pns73ft07rg-a/hospital_db_5y87') 
+    'default': dj_database_url.parse('postgresql://hospital_user:RjV0r5Pk61cVjSsRx6x8eacRGwA8LOwC@dpg-d6rqueea2pns73ft07rg-a.oregon-postgres.render.com/hospital_db_5y87') 
+
 }
+
