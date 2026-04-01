@@ -17,7 +17,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 SECRET_KEY = 'django-insecure-pj&582b)%d@q4&bpwgz5&+h*$w&yjs@+3hw90-s8#ojea%m#$r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'hospital-management-system1-hjlf.onrender.com']
 
 
@@ -125,10 +125,14 @@ AWS_SECRET_ACCESS_KEY = 'YOUR_AWS_SECRET'
 AWS_STORAGE_BUCKET_NAME = 'your-bucket-name'
 AWS_QUERYSTRING_AUTH = False  # public read
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+import os
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.parse('postgresql://hospital_user:RjV0r5Pk61cVjSsRx6x8eacRGwA8LOwC@dpg-d6rqueea2pns73ft07rg-a.oregon-postgres.render.com/hospital_db_5y87') 
-
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600
+    )
 }
 
