@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+
 from .models import Appoinment
 from .forms import AppoinmentForm
 from django.core.paginator import Paginator
@@ -7,7 +8,7 @@ from django.core.paginator import Paginator
 #  List
 def Appoinment_List(request):
     page_obj = Appoinment.objects.all().order_by('id')
-
+               
   
     return render(request, 'Appoinments/Appoinment_List.html', {
         'page_obj': page_obj
