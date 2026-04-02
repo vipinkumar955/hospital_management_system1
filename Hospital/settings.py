@@ -22,8 +22,12 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = False
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'hospital-management-system1-hjlf.onrender.com']
+ALLOWED_HOSTS = [
+    '127.0.0.1', 
+    'localhost', 
+    'hospital-management-system1-hjlf.onrender.com',
+    '.onrender.com',  # This allows all render subdomains
+]
 
 
 # Application definition
@@ -72,14 +76,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Hospital.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
-
-
-# Password validation
-# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -96,9 +92,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/6.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -108,25 +101,21 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
-
-
 # Static files (CSS, JS)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Render के लिए जरूरी
 
-# Media files (uploaded images)
-MEDIA_URL = '/media/'
 # settings.py
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'YOUR_AWS_KEY'
-AWS_SECRET_ACCESS_KEY = 'YOUR_AWS_SECRET'
-AWS_STORAGE_BUCKET_NAME = 'your-bucket-name'
-AWS_QUERYSTRING_AUTH = False  # public read
+#AWS_ACCESS_KEY_ID = 'YOUR_AWS_KEY'
+#AWS_SECRET_ACCESS_KEY = 'YOUR_AWS_SECRET'
+#AWS_STORAGE_BUCKET_NAME = 'your-bucket-name'
+#AWS_QUERYSTRING_AUTH = False  # public read\
+    
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 import os
 import dj_database_url
