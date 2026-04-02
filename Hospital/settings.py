@@ -17,7 +17,12 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 SECRET_KEY = 'django-insecure-pj&582b)%d@q4&bpwgz5&+h*$w&yjs@+3hw90-s8#ojea%m#$r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+from pathlib import Path
+import os
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 DEBUG = False
+
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'hospital-management-system1-hjlf.onrender.com']
 
 
@@ -32,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'patients',
     'Doctor',
-    'Appoinments'
+    'Appoinments',
+    'core'
 ]
 
 MIDDLEWARE = [
@@ -51,7 +57,7 @@ ROOT_URLCONF = 'Hospital.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ 'templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,10 +111,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-import os
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Static files (CSS, JS)
 STATIC_URL = '/static/'
